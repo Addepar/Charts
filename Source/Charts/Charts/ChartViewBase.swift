@@ -79,14 +79,14 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     internal var _drawUnitInChart = false
     
     /// The object representing the labels on the x-axis
-    internal var _xAxis: XAxis!
+    open var _xAxis: XAxis!
     
     /// The `Description` object of the chart.
     /// This should have been called just "description", but
     @objc open var chartDescription: Description?
         
     /// The legend object containing all data associated with the legend
-    internal var _legend: Legend!
+    open var _legend: Legend!
     
     /// delegate to receive chart events
     @objc open weak var delegate: ChartViewDelegate?
@@ -103,7 +103,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     /// alignment of the no data text
     @objc open var noDataTextAlignment: NSTextAlignment = .left
 
-    internal var _legendRenderer: LegendRenderer!
+    open var _legendRenderer: LegendRenderer!
     
     /// object responsible for rendering the data
     @objc open var renderer: DataRenderer?
@@ -111,7 +111,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     @objc open var highlighter: IHighlighter?
     
     /// object that manages the bounds and drawing constraints of the chart
-    internal var _viewPortHandler: ViewPortHandler!
+    open var _viewPortHandler: ViewPortHandler!
     
     /// object responsible for animations
     internal var _animator: Animator!
