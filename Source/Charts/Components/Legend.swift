@@ -35,6 +35,9 @@ open class Legend: ComponentBase
         
         /// Draw a horizontal line
         case line
+
+        /// Draw a scatter chart symbol
+        case scatter
     }
     
     @objc(ChartLegendHorizontalAlignment)

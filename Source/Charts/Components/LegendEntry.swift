@@ -85,4 +85,7 @@ open class LegendEntry: NSObject
     
     /// The color for drawing the form
     @objc open var formColor: NSUIColor?
+
+    @objc open var scatterShape: ScatterChartDataSet.Shape = .square
+
 }

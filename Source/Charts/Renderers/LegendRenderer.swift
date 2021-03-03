@@ -567,6 +567,16 @@ open class LegendRenderer: Renderer
             _formLineSegmentsBuffer[1].x = x + formSize
             _formLineSegmentsBuffer[1].y = y
             context.strokeLineSegments(between: _formLineSegmentsBuffer)
+
+        case .scatter:
+            let shape = entry.scatterShape
+            let renderer = ScatterChartDataSet.renderer(forShape: shape)
+            let dummyDataSet = ScatterChartDataSet(entries: [])
+            dummyDataSet.scatterShapeSize = formSize
+            dummyDataSet.scatterShapeHoleColor = formColor
+            dummyDataSet.scatterShapeHoleRadius = formSize / 3
+
+            renderer.renderShape(context: context, dataSet: dummyDataSet, viewPortHandler: viewPortHandler, point: CGPoint(x: x + (formSize / 2.0), y: y), color: formColor)
         }
     }
 

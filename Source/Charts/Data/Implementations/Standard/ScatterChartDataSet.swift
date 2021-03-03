@@ -25,6 +25,11 @@ open class ScatterChartDataSet: LineScatterCandleRadarChartDataSet, IScatterChar
         case x
         case chevronUp
         case chevronDown
+        case star
+        case hexagon
+        case stamp
+        case bat
+        case target
     }
     
     /// The size the scatter shape will have
@@ -61,6 +66,11 @@ open class ScatterChartDataSet: LineScatterCandleRadarChartDataSet, IScatterChar
         case .x: return XShapeRenderer()
         case .chevronUp: return ChevronUpShapeRenderer()
         case .chevronDown: return ChevronDownShapeRenderer()
+        case .star: return StarShapeRenderer()
+        case .hexagon: return HexagonShapeRenderer()
+        case .stamp: return StampShapeRenderer()
+        case .bat: return BatShapeRenderer()
+        case .target: return TargetShapeRenderer()
         }
     }
     
