@@ -312,7 +312,7 @@ open class LegendRenderer: Renderer
                 posY = yoffset
                 
             case .bottom:
-                posY = viewPortHandler.chartHeight - yoffset - legend.neededHeight
+                posY = viewPortHandler.chartHeight - yoffset - legend.neededHeight + legend.yPadding
                 
             case .center:
                 posY = (viewPortHandler.chartHeight - legend.neededHeight) / 2.0 + yoffset

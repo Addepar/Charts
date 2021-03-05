@@ -184,6 +184,7 @@ open class Legend: ComponentBase
         )
     }
 
+    @objc open var yPadding = CGFloat(5.0)
     @objc open var neededWidth = CGFloat(0.0)
     @objc open var neededHeight = CGFloat(0.0)
     @objc open var textWidthMax = CGFloat(0.0)
@@ -287,7 +288,7 @@ open class Legend: ComponentBase
             }
             
             neededWidth = maxWidth
-            neededHeight = maxHeight
+            neededHeight = maxHeight + yPadding
             
         case .horizontal:
             
@@ -393,7 +394,7 @@ open class Legend: ComponentBase
         }
         
         neededWidth += xOffset
-        neededHeight += yOffset
+        neededHeight += yOffset + yPadding
     }
     
     /// MARK: - Custom legend
