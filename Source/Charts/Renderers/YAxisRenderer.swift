@@ -82,6 +82,19 @@ open class YAxisRenderer: AxisRendererBase
             positions: transformedPositions(),
             offset: yoffset - yAxis.labelFont.lineHeight,
             textAlign: textAlign)
+
+        if let title = yAxis.title {
+
+            context.drawText(
+                title,
+                at: CGPoint(
+                    x: yAxis.xOffset + (yAxis.titleOffset/2),
+                    y: viewPortHandler.offsetTop + (viewPortHandler.contentHeight / 2)
+                ),
+                angleRadians: -.pi/2,
+                attributes: [.font: yAxis.titleFont]
+            )
+        }
     }
     
     open override func renderAxisLine(context: CGContext)

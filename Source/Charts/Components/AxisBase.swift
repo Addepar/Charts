@@ -23,7 +23,9 @@ open class AxisBase: ComponentBase
     
     /// Custom formatter that is used instead of the auto-formatter if set
     private var _axisValueFormatter: IAxisValueFormatter?
-    
+
+    @objc open var titleFont = NSUIFont.systemFont(ofSize: 11.0)
+
     @objc open var labelFont = NSUIFont.systemFont(ofSize: 10.0)
     @objc open var labelTextColor = NSUIColor.labelOrBlack
     
@@ -91,6 +93,9 @@ open class AxisBase: ComponentBase
     
     /// the number of decimal digits to use (for the default formatter
     @objc open var decimals: Int = 0
+
+    @objc open var title: String?
+    @objc open var titleOffset: CGFloat = 15
     
     /// When true, axis labels are controlled by the `granularity` property.
     /// When false, axis values could possibly be repeated.

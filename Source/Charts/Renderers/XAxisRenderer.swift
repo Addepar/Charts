@@ -251,6 +251,24 @@ open class XAxisRenderer: AxisRendererBase
                           angleRadians: labelRotationAngleRadians)
             }
         }
+
+        if let title = xAxis.title {
+            let y: CGFloat
+            if xAxis.labelPosition == .top {
+                y = xAxis.yOffset + (xAxis.titleOffset/2)
+            } else {
+                y = viewPortHandler.chartHeight - (xAxis.titleFont.lineHeight/2) - (xAxis.titleOffset/2)
+            }
+            context.drawText(
+                title,
+                at: CGPoint(
+                    x: viewPortHandler.offsetLeft + (viewPortHandler.contentWidth / 2),
+                    y: y
+                ),
+                angleRadians: 0,
+                attributes: [.font: xAxis.titleFont]
+            )
+        }
     }
     
     @objc open func drawLabel(
