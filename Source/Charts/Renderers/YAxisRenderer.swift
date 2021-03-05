@@ -88,11 +88,11 @@ open class YAxisRenderer: AxisRendererBase
             context.drawText(
                 title,
                 at: CGPoint(
-                    x: yAxis.xOffset + (yAxis.titleOffset/2),
+                    x: yAxis.titleFont.lineHeight/2,
                     y: viewPortHandler.offsetTop + (viewPortHandler.contentHeight / 2)
                 ),
                 angleRadians: -.pi/2,
-                attributes: [.font: yAxis.titleFont]
+                attributes: [.font: yAxis.titleFont, .foregroundColor: yAxis.labelTextColor]
             )
         }
     }

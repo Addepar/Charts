@@ -257,7 +257,7 @@ open class XAxisRenderer: AxisRendererBase
             if xAxis.labelPosition == .top {
                 y = xAxis.yOffset + (xAxis.titleOffset/2)
             } else {
-                y = viewPortHandler.chartHeight - (xAxis.titleFont.lineHeight/2) - (xAxis.titleOffset/2)
+                y = viewPortHandler.contentBottom + xAxis.yOffset + xAxis.labelRotatedHeight + xAxis.titleOffset + (xAxis.titleFont.lineHeight/2)
             }
             context.drawText(
                 title,
@@ -266,7 +266,7 @@ open class XAxisRenderer: AxisRendererBase
                     y: y
                 ),
                 angleRadians: 0,
-                attributes: [.font: xAxis.titleFont]
+                attributes: [.font: xAxis.titleFont, .foregroundColor: xAxis.labelTextColor]
             )
         }
     }

@@ -95,7 +95,7 @@ open class AxisBase: ComponentBase
     @objc open var decimals: Int = 0
 
     @objc open var title: String?
-    @objc open var titleOffset: CGFloat = 15
+    @objc open var titleOffset: CGFloat = 10
     
     /// When true, axis labels are controlled by the `granularity` property.
     /// When false, axis values could possibly be repeated.
