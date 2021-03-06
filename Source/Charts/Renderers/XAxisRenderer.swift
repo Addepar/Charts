@@ -251,22 +251,28 @@ open class XAxisRenderer: AxisRendererBase
                           angleRadians: labelRotationAngleRadians)
             }
         }
-
-        if let title = xAxis.title {
+        let axis = xAxis
+        if let title = axis.title {
             let y: CGFloat
-            if xAxis.labelPosition == .top {
-                y = xAxis.yOffset + (xAxis.titleOffset/2)
+            if axis.labelPosition == .top {
+                y = axis.yOffset + (axis.titleOffset/2)
             } else {
-                y = viewPortHandler.contentBottom + xAxis.yOffset + xAxis.labelRotatedHeight + xAxis.titleOffset + (xAxis.titleFont.lineHeight/2)
+                y = viewPortHandler.contentBottom + axis.yOffset + axis.labelRotatedHeight + axis.titleOffset
             }
-            context.drawText(
-                title,
-                at: CGPoint(
-                    x: viewPortHandler.offsetLeft + (viewPortHandler.contentWidth / 2),
-                    y: y
-                ),
-                angleRadians: 0,
-                attributes: [.font: xAxis.titleFont, .foregroundColor: xAxis.labelTextColor]
+            let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+            paragraphStyle.lineBreakMode = .byWordWrapping
+            paragraphStyle.alignment = .center
+            let attributes: [NSAttributedString.Key : Any] = [.font: axis.titleFont, .foregroundColor: axis.labelTextColor, .paragraphStyle: paragraphStyle]
+            let size = CGSize(width: viewPortHandler.contentWidth, height: 60)
+            drawLabel(
+                context: context,
+                formattedLabel: title,
+                x: viewPortHandler.offsetLeft + (viewPortHandler.contentWidth / 2),
+                y: y,
+                attributes: attributes,
+                constrainedToSize: size,
+                anchor: CGPoint(x: 0.5, y: 0),
+                angleRadians: 0
             )
         }
     }

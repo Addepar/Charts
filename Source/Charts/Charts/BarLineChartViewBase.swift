@@ -449,7 +449,16 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
             if xAxis.isEnabled && xAxis.isDrawLabelsEnabled
             {
                 let xlabelheight = xAxis.labelRotatedHeight + xAxis.yOffset
-                let totalExtra = xAxis.title != nil ? xAxis.titleFont.lineHeight + xAxis.titleOffset : 0
+                var totalExtra: CGFloat = 0
+                if let title = xAxis.title {
+                    let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+                    paragraphStyle.lineBreakMode = .byWordWrapping
+                    paragraphStyle.alignment = .center
+                    let attributes: [NSAttributedString.Key : Any] = [.font: xAxis.titleFont, .paragraphStyle: paragraphStyle]
+                    let size = CGSize(width: viewPortHandler.contentWidth, height: 60)
+                    let rect = (title as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+                    totalExtra += rect.size.height + xAxis.titleOffset
+                }
 
                 // offsets for x-labels
                 if xAxis.labelPosition == .bottom
