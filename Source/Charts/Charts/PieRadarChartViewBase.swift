@@ -71,7 +71,7 @@ open class PieRadarChartViewBase: ChartViewBase
         #endif
     }
     
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         /*_xAxis.axisRange = Double((_data?.xVals.count ?? 0) - 1)*/
     }

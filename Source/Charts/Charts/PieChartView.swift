@@ -173,7 +173,7 @@ open class PieChartView: PieRadarChartViewBase
 
     }
 
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         calcAngles()
     }

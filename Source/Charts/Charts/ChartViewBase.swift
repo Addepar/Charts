@@ -280,7 +280,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     }
     
     /// calcualtes the y-min and y-max value and the y-delta and x-delta value
-    internal func calcMinMax()
+    open func calcMinMax()
     {
         fatalError("calcMinMax() cannot be called on ChartViewBase")
     }

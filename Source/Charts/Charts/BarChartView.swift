@@ -33,7 +33,7 @@ open class BarChartView: BarLineChartViewBase, BarChartDataProvider
         self.xAxis.spaceMax = 0.5
     }
     
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         guard let data = self.data as? BarChartData
             else { return }

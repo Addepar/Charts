@@ -69,7 +69,7 @@ open class RadarChartView: PieRadarChartViewBase
         self.highlighter = RadarHighlighter(chart: self)
     }
 
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         super.calcMinMax()
         
