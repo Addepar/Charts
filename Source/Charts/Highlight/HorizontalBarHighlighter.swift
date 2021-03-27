@@ -34,7 +34,7 @@ open class HorizontalBarHighlighter: BarHighlighter
         return high
     }
     
-    internal override func buildHighlights(
+    open override func buildHighlights(
         dataSet set: IChartDataSet,
         dataSetIndex: Int,
         xValue: Double,
