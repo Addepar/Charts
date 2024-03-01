@@ -11,7 +11,7 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS)
+#if os(iOS) || os(tvOS) || os(visionOS)
 #if canImport(UIKit)
     import UIKit
 #endif
@@ -64,7 +64,9 @@ open class NSUIAccessibilityElement: UIAccessibilityElement
         set
         {
             guard let containerView = containerView else { return }
+            #if !os(visionOS)
             super.accessibilityFrame = containerView.convert(newValue, to: UIScreen.main.coordinateSpace)
+            #endif
         }
     }
 }
