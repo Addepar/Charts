@@ -3,16 +3,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "DGCharts",
+    name: "Charts",
     platforms: [
-          .iOS(.v8),
-          .tvOS(.v9),
-          .macOS(.v10_11),
+        .iOS(.v12),
+        .tvOS(.v12),
+        .macOS(.v10_15),
     ],
     products: [
         .library(
             name: "DGCharts",
-            targets: ["Charts"]),
+            targets: ["Charts"])
     ],
     targets: [
         .target(name: "Charts")

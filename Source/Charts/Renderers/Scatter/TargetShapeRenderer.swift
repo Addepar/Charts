@@ -1,46 +1,37 @@
-import Foundation
 import CoreGraphics
-import UIKit
+import Foundation
 
-open class TargetShapeRenderer : NSObject, IShapeRenderer
-{
+open class TargetShapeRenderer: NSObject, IShapeRenderer {
     open func renderShape(
         context: CGContext,
         dataSet: IScatterChartDataSet,
         viewPortHandler: ViewPortHandler,
         point: CGPoint,
-        color: NSUIColor)
-    {
+        color: NSUIColor
+    ) {
         let width = dataSet.scatterShapeSize
         let height = width
-        let radius: CGFloat = dataSet.scatterShapeSize/2
+        let radius: CGFloat = dataSet.scatterShapeSize / 2
 
-        context.setLineWidth(radius/4)
+        context.saveGState()
+        context.translateBy(x: point.x, y: point.y)
         context.setStrokeColor(color.cgColor)
         context.setFillColor(color.cgColor)
-        context.translateBy(x: point.x, y: point.y)
 
-        let path = UIBezierPath(
-            arcCenter: CGPoint(x: 0.0, y: 0.0),
-            radius: radius,
-            startAngle: 0,
-            endAngle: .pi * 2,
-            clockwise: true
-        )
-        path.lineWidth = radius/4
-        path.close()
-        path.stroke()
+        // Outer circle
+        context.setLineWidth(radius / 4)
+        context.addArc(
+            center: CGPoint(x: 0.0, y: 0.0), radius: radius, startAngle: 0, endAngle: .pi * 2,
+            clockwise: false)
+        context.strokePath()
 
-        let path2 = UIBezierPath(
-            arcCenter: CGPoint(x: 0.0, y: 0.0),
-            radius: radius/3,
-            startAngle: 0,
-            endAngle: .pi * 2,
-            clockwise: true
-        )
-        path2.close()
+        // Inner circle
+        context.setLineWidth(1.0)
+        context.addArc(
+            center: CGPoint(x: 0.0, y: 0.0), radius: radius / 3, startAngle: 0, endAngle: .pi * 2,
+            clockwise: false)
+        context.drawPath(using: .fillStroke)
 
-        path2.fill()
-        path2.stroke()
+        context.restoreGState()
     }
 }
